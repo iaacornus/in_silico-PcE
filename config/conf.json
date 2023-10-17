@@ -1,0 +1,11 @@
+{
+    "path": "in_silico/data",
+    "iteration": 1000,
+    "lim": 10000,
+    "api": "-",
+    "keywords": {
+            "keyword_1": [],
+            "keyword_2": [],
+            "keyword_3": []
+        }
+}
