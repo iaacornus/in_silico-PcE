@@ -6,5 +6,7 @@
 - [ ] define output locations
 - [ ] create systemd services for automatic data collection
 - [ ] define exclusion and inclusion criteria
+- [ ] create a logging function
+- [ ] create a function for stdout display
 
 
