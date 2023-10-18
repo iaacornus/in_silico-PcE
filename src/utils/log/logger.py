@@ -76,14 +76,14 @@ class Logger:
         """
 
         match exception_:
-            case "error": # for major error
+            case "E": # for major error
                 self.log.error(f"[!] {message}")
-            case "Finfo":
+            case "F":
                 # for failed subprocesses, but handled by exception
                 self.log.warning(f"!>> {message}")
-            case "subinfo": # normal subprocess information
+            case "S": # normal subprocess information
                 self.log.info(f"+>> {message}")
-            case "proc_info": # for major processes
+            case "P": # for major processes
                 self.log.info(f"[>] {message}")
-            case "info": # to print information in the terminal
+            case "I": # to print information in the terminal
                 self.log.info(f"[=] {message}")
