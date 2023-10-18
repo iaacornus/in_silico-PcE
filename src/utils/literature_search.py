@@ -3,15 +3,20 @@ from os.path import exists
 from pathlib import Path
 from typing import Self
 
+from src.utils.log.logger import Logger
 
 class LiteratureSearch:
-    def __init__(self: Self) -> None:
+    def __init__(
+            self: Self,
+            log: Logger
+        ) -> None:
         """
         __init__ is a function that initiates the object
         LiteratureSearch and initiates the global variable for the
         class.
         """
 
+        self.log: Logger = log
         self.HOME: str = Path.home()
         self.DEFAULT_PATH: str = (
                 f"{self.HOME}/in_silico/literatures"
@@ -36,7 +41,8 @@ class LiteratureSearch:
 
     def eval_stat(
             self: Self,
-            status_code: int
+            status_code: int,
+            link: str
         ) -> bool:
         """
         Evaluates the status code given as an input.
@@ -50,8 +56,15 @@ class LiteratureSearch:
         """
 
         if status_code in [num for num in range(200)]:
+            self.log.logger(
+                "I", f"Link: {link} accessible, code: {status_code}"
+            )
             return True
 
+        self.log.logger(
+            "E",
+            f"Link: {link} not accessible, code: {status_code}"
+        )
         return False
 
     def def_val(
@@ -90,15 +103,37 @@ class LiteratureSearch:
                         NotADirectoryError,
                         PermissionError,
                         FileNotFoundError
-                    ):
+                    ) as Err:
+                    self.log.logger(
+                        "F",
+                        (
+                            ""
+                            f"cannot access {self.DEFAULT_PATH} "
+                            "retrying and creating"
+                        ),
+                        err=Err
+                    )
                     mkdir(self.DEFAULT_PATH)
                     continue
-                except OSError:
+                except OSError as Err:
+                    self.log.logger(
+                        "E",
+                        "returning status code 0",
+                        err=Err
+                    )
                     return 0
                 finally:
+                    self.log.logger(
+                        "I",
+                        "Path found.",
+                        info=self.DEFAULT_PATH
+                    )
                     path = self.DEFAULT_PATH
 
         if iterations == 0:
+            self.log.logger(
+                "S", f"Default iter count set to {self.DEFAULT_ITER}"
+            )
             iterations = self.DEFAULT_ITER
 
         #! return if there is no keyword
@@ -142,6 +177,11 @@ class LiteratureSearch:
             case tuple():
                 pass
             case 0, _:
+                self.log.logger(
+                    "E",
+                    "cannot set default values.",
+                    err=f"function returned {func_args}."
+                )
                 return 0
 
 
