@@ -4,5 +4,7 @@
 - [ ] avoid scrape duplication
 - [ ] create file merger using sha256
 - [ ] define output locations
+- [ ] create systemd services for automatic data collection
+- [ ] define exclusion and inclusion criteria
 
 
