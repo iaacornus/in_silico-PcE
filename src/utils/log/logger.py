@@ -82,13 +82,13 @@ class Logger:
         match exception_:
             case "E": # for major error
                 self.log.error(
-                    f"[!] [Err: {err}] {msg}, aborting."
+                    f"[!] [Err unhandled: {err}] {msg}, aborting ..."
                 )
             case "F":
                 # for failed proc, but handled by exception
                 self.log.warning(
                     (
-                        f"!>> [Encountered: {err}] "
+                        f"!>> [Err handled: {err}] "
                         "{message}, proceeding ..."
                     )
                 )
