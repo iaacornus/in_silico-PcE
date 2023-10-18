@@ -1,7 +1,7 @@
-# *In silico* analysis - PcE
+# Automated Literature Screening Tool
 
 This repository contains all the scripts, codes, utilities and other
-dependencies required for the execution of the analysis.
+dependencies required for the automated literature screening.
 
 # Structure
 
