@@ -370,6 +370,7 @@ requests-file=1.5.1=pyhd3eb1b0_0
 responses=0.13.3=pyhd3eb1b0_0
 rfc3339-validator=0.1.4=py311h06a4308_0
 rfc3986-validator=0.1.1=py311h06a4308_0
+rich=13.3.5=py311h06a4308_0
 rope=1.7.0=py311h06a4308_0
 rtree=1.0.1=py311h06a4308_0
 s3fs=2023.4.0=py311h06a4308_0
