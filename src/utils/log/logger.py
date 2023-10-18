@@ -58,7 +58,7 @@ class Logger:
     def logger(
             self: Self,
             exception_: str,
-            message: str,
+            msg: str,
             err: Optional[str] = None,
             pinfo: Optional[str] = None,
             minfo: Optional[str] = None,
@@ -82,7 +82,7 @@ class Logger:
         match exception_:
             case "E": # for major error
                 self.log.error(
-                    f"[!] [Err: {err}] {message}, aborting."
+                    f"[!] [Err: {err}] {msg}, aborting."
                 )
             case "F":
                 # for failed proc, but handled by exception
@@ -94,13 +94,13 @@ class Logger:
                 )
             case "S": # normal subprocess information
                 self.log.info(
-                    f"+>> [{pinfo}] {message} ..."
+                    f"+>> [{pinfo}] {msg} ..."
                 )
             case "P": # for major processes
                 self.log.info(
-                    f"[>] [Success: {minfo}] {message} ..."
+                    f"[>] [Success: {minfo}] {msg} ..."
                 )
             case "I": # to print information in the terminal
                 self.log.info(
-                    f"[=] [{info}] {message}."
+                    f"[=] [{info}] {msg}."
                 )
